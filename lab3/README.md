@@ -142,7 +142,7 @@ and the array state after each step. The first row is worked.
 | Step | Current `i` | Value at `i` | Children (left, right) | Largest index | Action taken | Array afterward |
 |---|---|---|---|---|---|---|
 | 1 | 0 | 4 | `left=1` (10), `right=2` (8) | 1 | Swap `arr[0]` with `arr[1]` | `[10, 4, 8, 5, 1, 2, 7]` |
-| 2 | TODO | TODO | TODO | TODO | TODO | TODO |
+| 2 | 1 | TODO | TODO | TODO | TODO | TODO |
 | 3 | TODO | TODO | TODO | TODO | TODO | TODO |
 
 ### 1.2 Trace: Heapsort extraction passes
