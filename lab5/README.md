@@ -98,13 +98,16 @@ have a different height, creating imbalances higher up.
 
 **TODO 1.1:** Briefly recall the three deletion cases from Lab 3/4:
 - What happens when the target node has 0 children?
+-    Delete the node and rebalance if necessary
 - What happens when the target node has 1 child?
+-    Connect the node to the parent and rebalance if necessary.
 - What happens when the target node has 2 children, and why is the in-order successor used?
+-    Find the lowest value on the right subtree and rebalance it with that value and rebalance of necessary
 
 ### 1.2 Short answer: Height change after deletion
 
 **TODO 1.2:** When you delete a leaf node from an AVL tree:
-- Does the leaf's parent's height change? By how much?
+- Does the leaf's parent's height change? By how much? Yes the leafs parents height changes by one.
 - Can the grandparent's height change?
 - Can the imbalance propagate to the root?
 
