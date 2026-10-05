@@ -108,8 +108,8 @@ have a different height, creating imbalances higher up.
 
 **TODO 1.2:** When you delete a leaf node from an AVL tree:
 - Does the leaf's parent's height change? By how much? Yes the leafs parents height changes by one.
-- Can the grandparent's height change?
-- Can the imbalance propagate to the root?
+- Can the grandparent's height change? Yes if the parent height change the grandparents heights changes
+- Can the imbalance propagate to the root? Yes it is called a cascade
 
 ---
 
