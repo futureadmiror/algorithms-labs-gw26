@@ -229,9 +229,9 @@ are worked for you.
 |---|---|---|---|---|---|
 | 1 | `(12, "A")` | `12 % 7 = 5` | `[[12, "A"]]` | 1 | `1/7 ≈ 0.14` |
 | 2 | `(19, "B")` | `19 % 7 = 5` | `[[12, "A"], [19, "B"]]` | 2 | `2/7 ≈ 0.29` |
-| 3 | `(24, "C")` | TODO | TODO | TODO | TODO |
-| 4 | `(26, "D")` | TODO | TODO | TODO | TODO |
-| 5 | `(31, "E")` | TODO | TODO | TODO | TODO |
+| 3 | `(24, "C")` | `24% 7 = 3` | `[ [24, "  C"]]` | 1 | `1/7 = 0.14` |
+| 4 | `(26, "D")` | `26% 7 = 5` | `[[12, "A"], [19, "B"],  [24, "  D"]]` | 3 | `4/7 = 0.42` |
+| 5 | `(31, "E")` | `31% 7 = 3` | `[ [24, "  C"], [24, " E"]]` | 5 | `2/7 = 0.29` |
 
 ### 2.2 Implementation
 
@@ -254,7 +254,7 @@ $2M = 8$, why do we have to recompute `key % new_capacity` for every key
 (for example, key `14` moves from bucket `14 % 4 = 2` to bucket `14 % 8 = 6`)
 instead of just copying bucket `2` from the old table into bucket `2` of the new
 table?
-
+    This is because we are using a new hashing function where every time the value is called it lands there.
 ---
 
 ## Part 3: Collision Resolution Strategy 2: Open Addressing (Linear Probing)
@@ -352,11 +352,11 @@ $h(k) = k \bmod 7$). The first two insertions and first lookup are worked.
 |---|---|---|---|---|---|
 | Insert `12` | `12 % 7 = 5` | `5` | 1 | Placed at slot `5` | `[_, _, _, _, _, 12, _]` |
 | Insert `19` | `19 % 7 = 5` | `5 -> 6` | 2 | Placed at slot `6` | `[_, _, _, _, _, 12, 19]` |
-| Insert `26` | `26 % 7 = 5` | TODO | TODO | Placed at slot `0` | `[26, _, _, _, _, 12, 19]` |
-| Insert `3` | `3 % 7 = 3` | TODO | TODO | Placed at slot `3` | `[26, _, _, 3, _, 12, 19]` |
-| Insert `10` | `10 % 7 = 3` | TODO | TODO | Placed at slot `4` | `[26, _, _, 3, 10, 12, 19]` |
+| Insert `26` | `26 % 7 = 5` | 5->6->0 | 3 | Placed at slot `0` | `[26, _, _, _, _, 12, 19]` |
+| Insert `3` | `3 % 7 = 3` | `3` | 1 | Placed at slot `3` | `[26, _, _, 3, _, 12, 19]` |
+| Insert `10` | `10 % 7 = 3` | `3->4` | 2 | Placed at slot `4` | `[26, _, _, 3, 10, 12, 19]` |
 | Lookup `26` | `26 % 7 = 5` | `5 -> 6 -> 0` | 3 | Found `26` at slot `0` | *(unchanged)* |
-| Lookup `33` | `33 % 7 = 5` | TODO | TODO | Not found (hit empty slot `1`) | *(unchanged)* |
+| Lookup `33` | `33 % 7 = 5` | `5 -> 6 -> 0` | 3 | Not found (hit empty slot `1`) | *(unchanged)* |
 
 ### 3.2 Implementation
 
@@ -378,7 +378,7 @@ Table 3.1, why can `linear_probe_lookup` stop as soon as it hits empty slot `1`
 without checking slots `2`, `3`, or `4`? Also, why does Open Addressing slow
 down much more drastically than Separate Chaining when the load factor $\alpha$
 approaches `1.0`?
-
+  Because that means the value wasn't inserted as it would be connected to that chain. Open addressing can become O(n) if only one slot is left and you hash into the value after.
 ---
 
 ## Final check
