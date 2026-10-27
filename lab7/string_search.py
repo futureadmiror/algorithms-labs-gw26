@@ -35,8 +35,20 @@ def rabin_karp(text, pattern, d=256, q=101):
     p = 0
     t = 0
 
-    # TODO 2.2: build the initial hashes, verify hits, and roll to each next window
-    raise NotImplementedError("Complete rabin_karp")
+        for j in range(m):
+        p = (d * p + ord(pattern[j])) % q
+        t = (d * t + ord(text[j])) % q
+
+    for s in range(n - m + 1):
+        if p == t:
+            j = 0
+            while j < m and text[s + j] == pattern[j]:
+                j += 1
+            if j == m:
+                matches.append(s)
+
+        if s < n - m:
+            t = (d * (t - ord(text[s]) * h) + ord(text[s + m])) % q
 
     return matches
 
