@@ -11,8 +11,12 @@ def naive_search(text, pattern):
         return []
     matches = []
 
-    # TODO 1.2: compare characters at each shift and collect complete matches
-    raise NotImplementedError("Complete naive_search")
+    for s in range(n - m + 1):
+        j = 0
+        while j < m and text[s + j] == pattern[j]:
+            j += 1
+        if j == m:
+            matches.append(s)
 
     return matches
 
