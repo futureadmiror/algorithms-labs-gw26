@@ -47,10 +47,17 @@ def reconstruct_path(parent, source, target):
     path = []
     current = target
 
-    # TODO 2.3: follow parents, reverse the path, and check that it starts at source
-    raise NotImplementedError("Complete reconstruct_path")
-
-    return path
+    while current is not None:
+        path.append(current)
+        if current == source:
+            break
+        current = parent[current]
+        
+    path.reverse()
+    
+    if path and path[0] == source:
+        return path
+    return []
 
 
 def dfs(graph):
