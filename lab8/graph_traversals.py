@@ -27,8 +27,14 @@ def bfs(graph, source):
     dist[source] = 0
     queue = deque([source])
 
-    # TODO 2.2: process the queue and discover each unvisited neighbor
-    raise NotImplementedError("Complete bfs")
+    while queue:
+        u = queue.popleft()
+        for v in graph[u]:
+            if not visited[v]:
+                visited[v] = True
+                dist[v] = dist[u] + 1
+                parent[v] = u
+                queue.append(v)
 
     return dist, parent
 
