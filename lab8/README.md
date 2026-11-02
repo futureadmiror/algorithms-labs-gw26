@@ -225,9 +225,9 @@ vertex `5`.
 | Vertex | Parent | Discovery time | Finishing time |
 |---|---|---|---|
 | 0 | `None` | 1 | 10 |
-| 3 | TODO | TODO | TODO |
-| 4 | TODO | TODO | TODO |
-| 5 | TODO | TODO | TODO |
+| 3 | 1 | 3 | 8 |
+| 4 | 3 | 4 | 7 |
+| 5 | none | 11 | 12 |
 
 ### 3.2 Implementation
 
@@ -248,13 +248,13 @@ a vertex's neighbors requires scanning its entire row.
 
 | Cost | Adjacency list | Adjacency matrix |
 |---|---|---|
-| Store the graph | TODO | TODO |
-| Run BFS | TODO | TODO |
-| Run DFS | TODO | TODO |
+| Store the graph | O(V+E) | O(V2) |
+| Run BFS | O(V+E) | O(V2) |
+| Run DFS | O(V+E) | O(V2) |
 
 In a few sentences, explain how many neighbor entries each traversal checks
 with each representation. Why does a sparse graph benefit from adjacency lists?
-
+    For adjacency list for both breath first search and depth first you check all neighbors which is 2E. Adjacency metrix it would be V2.
 ---
 
 ## Final check
