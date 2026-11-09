@@ -19,8 +19,26 @@ def topological_sort(graph):
     queue = deque()
     order = []
 
-    # TODO 1.2: count incoming edges, process ready vertices, and check for a cycle
-    raise NotImplementedError("Complete topological_sort")
+    for u in range(n):
+        for v in graph[u]:
+            indegree[v] = indegree[v] + 1
+
+    for u in range(n):
+        if indegree[u] == 0:
+            queue.append(u)
+
+    while queue:
+        u = queue.popleft()
+        order.append(u)
+
+        for v in graph[u]:
+            indegree[v] = indegree[v] - 1
+
+            if indegree[v] == 0:
+                queue.append(v)
+
+    if len(order) != n:
+        return None
 
     return order
 
