@@ -252,19 +252,21 @@ calls, then decide whether the edge is accepted.
 
 | Edge | Roots | Accept? | Total weight |
 |---|---|---|---|
-| `(B, D): 4` | TODO | TODO | TODO |
-| `(A, C): 5` | TODO | TODO | TODO |
-| `(D, E): 6` | TODO | TODO | TODO |
+| `(B, D): 4` | ` A A` | `no` | `6` |
+| `(A, C): 5` | ` A A` | `no` | `6` |
+| `(D, E): 6` | ` A A` | `yes` | `12` |
 
 After checking `(B, D)`, what is `parent[D]`? Explain why a rejected edge
 can still change the parent array. Does Kruskal examine `(C, E): 7`?
 
+`parent[D] = A A rejected edge can still change the parent array because of path compressions. Kruskal doesnt examine 7`
 ### 2.3 Analysis
 
 **TODO 2.3:** For a connected graph, give Kruskal's total time bound,
 including initialization and sorting. You may use the lecture's amortized
 bound of `O(α(V))` per union-find operation, where `α` grows extremely slowly.
-Which step dominates? What changes if the edges are already sorted?
+Which step dominates? What changes if the edges are already sorted? 
+Kruskal's algorithm takes a total time bound of O(ElogE) because the edge sorting step dominates the runtime. If the edges are sorted O(Eα(V))
 
 ---
 
