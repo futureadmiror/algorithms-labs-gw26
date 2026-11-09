@@ -89,8 +89,8 @@ order, are `[0, 1, 1, 2, 1]`. Visit neighbors in the order shown.
 | Vertex removed | Queue afterward | In-degree of `D` |
 |---|---|---|
 | A | `[B, C]` | 2 |
-| B | TODO | TODO |
-| C | TODO | TODO |
+| B | [C,D] | 1 |
+| C | [D] | 0 |
 
 Now add the edge `E -> B`. Which vertices reach the output before the
 algorithm stops? What does the function return?
@@ -131,6 +131,10 @@ processed before that vertex, so one pass over the edges is enough.
 **TODO 1.3:** Give the time and extra-space bounds for Kahn's algorithm in
 terms of `V` vertices and `E` edges, excluding storage for the input graph.
 Briefly explain how often each vertex enters the queue and each edge is checked.
+Kahn’s algorithm is  O(V + E) time and needs O(V) extra space to keep track of the in-degrees and the queue. Every vertex gets put in the queue  once when its incoming edge count is zero then its outgoing edges are updated
+
+
+
 
 ---
 
