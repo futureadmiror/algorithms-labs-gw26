@@ -28,8 +28,16 @@ def prim(graph, start=0):
     queue = MinPriorityQueue(key)
     total = 0
 
-    # TODO 1.2: grow the tree and update the keys of queued neighbors
-    raise NotImplementedError("Complete prim")
+    while queue:
+        u = queue.extract_min()
+        if key[u] == inf:
+            return None
+        total += key[u]
+        for v, weight in graph[u]:
+            if v in queue and weight < key[v]:
+                key[v] = weight
+                parent[v] = u
+                queue.decrease_key(v, key[v])
 
     return parent, total
 
