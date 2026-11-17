@@ -53,8 +53,17 @@ def dijkstra(graph, source):
     distance[source] = 0
     queue = MinPriorityQueue(distance)
 
-    # TODO 2.2: finalize the closest vertex and relax its outgoing edges
-    raise NotImplementedError("Complete dijkstra")
+   while queue:
+        u = queue.extract_min()
+        if distance[u] == inf:
+            break
+        for v, weight in graph[u]:
+            if v in queue:
+                candidate = distance[u] + weight
+                if candidate < distance[v]:
+                    distance[v] = candidate
+                    parent[v] = u
+                    queue.decrease_key(v, distance[v])
 
     return distance, parent
 
